@@ -1,0 +1,135 @@
+[
+  {
+    "id": 1,
+    "title": "React.js Fundamentals",
+    "category": "web",
+    "instructor": "Sarah Chen",
+    "instructorBio": "Expert React developer with 8+ years of experience",
+    "duration": "8 weeks",
+    "level": "Beginner",
+    "students": 2450,
+    "rating": 4.8,
+    "price": 49.99,
+    "image": "/react-course.png",
+    "description": "Master the basics of React with hands-on projects and real-world examples.",
+    "fullDescription": "This comprehensive course covers everything you need to know about React.js.\n\nYou'll learn:\n- JSX and component fundamentals\n- Hooks (useState, useEffect, useContext)\n- Props and state management\n- Component lifecycle\n- Routing with React Router\n- Performance optimization\n- Best practices and patterns",
+    "modules": [
+      { "id": 1, "title": "Introduction to React", "lessons": 5 },
+      { "id": 2, "title": "Components & JSX", "lessons": 6 },
+      { "id": 3, "title": "Hooks Deep Dive", "lessons": 8 },
+      { "id": 4, "title": "State Management", "lessons": 7 },
+      { "id": 5, "title": "Routing & Navigation", "lessons": 5 },
+      { "id": 6, "title": "Building Projects", "lessons": 10 }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Advanced TypeScript",
+    "category": "web",
+    "instructor": "John Smith",
+    "instructorBio": "Senior TypeScript developer and architect",
+    "duration": "6 weeks",
+    "level": "Advanced",
+    "students": 1820,
+    "rating": 4.9,
+    "price": 79.99,
+    "image": "/typescript-course.jpg",
+    "description": "Deep dive into TypeScript advanced features and best practices.",
+    "fullDescription": "Master advanced TypeScript concepts and patterns.\n\nYou'll learn:\n- Advanced types and generics\n- Decorators and metadata\n- Module augmentation\n- Conditional types\n- Mapped types\n- Utility types\n- Type-safe patterns",
+    "modules": [
+      { "id": 1, "title": "TypeScript Advanced Types", "lessons": 6 },
+      { "id": 2, "title": "Generics Deep Dive", "lessons": 5 },
+      { "id": 3, "title": "Decorators & Metadata", "lessons": 4 },
+      { "id": 4, "title": "Conditional & Mapped Types", "lessons": 7 },
+      { "id": 5, "title": "Advanced Patterns", "lessons": 6 }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Mobile App Development",
+    "category": "mobile",
+    "instructor": "Emma Wilson",
+    "instructorBio": "Mobile development expert with cross-platform experience",
+    "duration": "12 weeks",
+    "level": "Intermediate",
+    "students": 1640,
+    "rating": 4.7,
+    "price": 89.99,
+    "image": "/mobile-app-development.png",
+    "description": "Build native mobile apps with React Native from scratch.",
+    "fullDescription": "Learn to build cross-platform mobile applications.\n\nYou'll learn:\n- React Native fundamentals\n- Navigation and routing\n- Native device features\n- App store deployment\n- Performance optimization\n- UI/UX best practices",
+    "modules": [
+      { "id": 1, "title": "React Native Basics", "lessons": 8 },
+      { "id": 2, "title": "Navigation & Routing", "lessons": 6 },
+      { "id": 3, "title": "Device Features", "lessons": 10 },
+      { "id": 4, "title": "App Deployment", "lessons": 5 },
+      { "id": 5, "title": "Advanced Topics", "lessons": 7 }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "AI & Machine Learning",
+    "category": "ai",
+    "instructor": "Dr. Michael Lee",
+    "instructorBio": "AI researcher and machine learning practitioner",
+    "duration": "10 weeks",
+    "level": "Advanced",
+    "students": 980,
+    "rating": 4.9,
+    "price": 99.99,
+    "image": "/ai-machine-learning.jpg",
+    "description": "Introduction to AI and ML algorithms with practical implementations.",
+    "fullDescription": "Explore the world of artificial intelligence and machine learning.\n\nYou'll learn:\n- Machine learning fundamentals\n- Neural networks and deep learning\n- Computer vision\n- Natural language processing\n- Model deployment\n- Ethics in AI",
+    "modules": [
+      { "id": 1, "title": "ML Fundamentals", "lessons": 8 },
+      { "id": 2, "title": "Neural Networks", "lessons": 10 },
+      { "id": 3, "title": "Computer Vision", "lessons": 7 },
+      { "id": 4, "title": "NLP Basics", "lessons": 6 },
+      { "id": 5, "title": "Model Deployment", "lessons": 5 }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Data Science 101",
+    "category": "data",
+    "instructor": "Lisa Brown",
+    "instructorBio": "Data scientist with experience in analytics and visualization",
+    "duration": "8 weeks",
+    "level": "Beginner",
+    "students": 2100,
+    "rating": 4.6,
+    "price": 69.99,
+    "image": "/data-science-concept.png",
+    "description": "Learn data analysis and visualization with Python and popular libraries.",
+    "fullDescription": "Start your journey in data science and analytics.\n\nYou'll learn:\n- Python for data analysis\n- Pandas and NumPy\n- Data visualization\n- Statistical analysis\n- Machine learning basics\n- Real-world projects",
+    "modules": [
+      { "id": 1, "title": "Python for Data", "lessons": 6 },
+      { "id": 2, "title": "Data Manipulation", "lessons": 8 },
+      { "id": 3, "title": "Visualization", "lessons": 7 },
+      { "id": 4, "title": "Statistics", "lessons": 5 },
+      { "id": 5, "title": "ML Introduction", "lessons": 6 }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Web Design Mastery",
+    "category": "web",
+    "instructor": "Alex Martinez",
+    "instructorBio": "Creative web designer and UI/UX specialist",
+    "duration": "7 weeks",
+    "level": "Intermediate",
+    "students": 1540,
+    "rating": 4.8,
+    "price": 59.99,
+    "image": "/web-design.jpg",
+    "description": "Create beautiful and functional websites with modern design principles.",
+    "fullDescription": "Master the art of web design and user experience.\n\nYou'll learn:\n- Design principles and theory\n- UI/UX best practices\n- Figma and design tools\n- Responsive design\n- Color theory and typography\n- Portfolio projects",
+    "modules": [
+      { "id": 1, "title": "Design Fundamentals", "lessons": 5 },
+      { "id": 2, "title": "UI/UX Principles", "lessons": 7 },
+      { "id": 3, "title": "Design Tools", "lessons": 6 },
+      { "id": 4, "title": "Responsive Design", "lessons": 5 },
+      { "id": 5, "title": "Portfolio Building", "lessons": 8 }
+    ]
+  }
+]

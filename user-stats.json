@@ -1,0 +1,32 @@
+{
+  "currentStreak": 5,
+  "longestStreak": 12,
+  "totalHoursLearned": 42.5,
+  "totalTasksCompleted": 24,
+  "lastActivityDate": "2026-01-04",
+  "weeklyGoal": 10,
+  "monthlyGoal": 40,
+  "achievements": [
+    {
+      "id": 1,
+      "title": "First Course Completed",
+      "description": "Completed your first course",
+      "unlocked": true,
+      "date": "2026-01-01"
+    },
+    {
+      "id": 2,
+      "title": "Week Streak",
+      "description": "Maintained a 7-day learning streak",
+      "unlocked": true,
+      "date": "2026-01-03"
+    },
+    {
+      "id": 3,
+      "title": "Task Master",
+      "description": "Completed 20 tasks",
+      "unlocked": true,
+      "date": "2026-01-02"
+    }
+  ]
+}

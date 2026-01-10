@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "Complete React Hooks Tutorial",
+    "description": "Watch the React hooks video and complete the exercises",
+    "courseId": 1,
+    "completed": false,
+    "dueDate": "2026-01-10",
+    "priority": "high",
+    "estimatedTime": 120
+  },
+  {
+    "id": 2,
+    "title": "Build a Todo App",
+    "description": "Create a functional todo application using React",
+    "courseId": 1,
+    "completed": true,
+    "dueDate": "2026-01-08",
+    "priority": "medium",
+    "estimatedTime": 180
+  },
+  {
+    "id": 3,
+    "title": "Study TypeScript Generics",
+    "description": "Learn about TypeScript generics with practical examples",
+    "courseId": 2,
+    "completed": false,
+    "dueDate": "2026-01-12",
+    "priority": "high",
+    "estimatedTime": 90
+  },
+  {
+    "id": 4,
+    "title": "Mobile App Wireframing",
+    "description": "Create wireframes for the mobile app project",
+    "courseId": 3,
+    "completed": false,
+    "dueDate": "2026-01-15",
+    "priority": "medium",
+    "estimatedTime": 150
+  },
+  {
+    "id": 5,
+    "title": "Data Visualization Practice",
+    "description": "Create charts and graphs using sample data",
+    "courseId": 5,
+    "completed": true,
+    "dueDate": "2026-01-05",
+    "priority": "low",
+    "estimatedTime": 100
+  },
+  {
+    "id": 6,
+    "title": "AI Ethics Reading",
+    "description": "Read and summarize AI ethics guidelines",
+    "courseId": 4,
+    "completed": false,
+    "dueDate": "2026-01-18",
+    "priority": "high",
+    "estimatedTime": 60
+  }
+]
