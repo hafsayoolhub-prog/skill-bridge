@@ -1,1 +1,11 @@
-.vercel
+# 1. Ensure all your current changes are saved with 'git status'
+# 2. Delete the local node_modules folder
+rm -rf node_modules 
+
+# 3. Add node_modules/ to your .gitignore file if it's not already there
+echo node_modules/ >> .gitignore 
+
+# 4. Tell Git to stop tracking the files that were just deleted
+git rm -r --cached node_modules
+
+
