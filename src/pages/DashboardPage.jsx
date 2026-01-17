@@ -12,29 +12,31 @@ export default function DashboardPage() {
 
   useEffect(() => {
     // Fetch courses and user stats
-    Promise.all([
-      fetch("/courses.json").then((res) => res.json()),
-    ])
+    Promise.all([fetch("/courses.json").then((res) => res.json())])
       .then(([coursesData]) => {
         // Filter enrolled courses
         const enrolled = coursesData.filter((course) =>
-          enrolledCourses.includes(course.id)
+          enrolledCourses.includes(course.id),
         );
         setEnrolledCoursesList(enrolled);
 
         // Filter recent tasks (upcoming and recent completed from context)
         const recentTasksFiltered = tasks
-          .filter((task) => enrolledCourses.includes(task.courseId))
+          .filter((task) =>
+            // Convert everything to string to prevent "1" !== 1 mismatch
+            enrolledCourses.map(String).includes(String(task.courseId)),
+          )
           .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
           .slice(0, 5);
+
         setRecentTasks(recentTasksFiltered);
 
         // Calculate dynamic stats
         const completedTasks = tasks.filter(
-          (task) => task.completed && enrolledCourses.includes(task.courseId)
+          (task) => task.completed && enrolledCourses.includes(task.courseId),
         ).length;
         const totalTasks = tasks.filter((task) =>
-          enrolledCourses.includes(task.courseId)
+          enrolledCourses.includes(task.courseId),
         ).length;
         const progress =
           totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
@@ -118,7 +120,9 @@ export default function DashboardPage() {
                 <p className="text-gray-600 text-sm mb-2">{stat.label}</p>
                 <p className="text-2xl">{stat.icon}</p>
               </div>
-              <p className="text-3xl font-bold text-black mb-2">{stat.value}</p>{" "}
+              <p className="text-3xl font-bold text-black mb-2">
+                {stat.value}
+              </p>{" "}
             </div>
           ))}
         </div>
