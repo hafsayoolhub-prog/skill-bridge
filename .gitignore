@@ -1,11 +1,26 @@
-# 1. Ensure all your current changes are saved with 'git status'
-# 2. Delete the local node_modules folder
-rm -rf node_modules 
 
-# 3. Add node_modules/ to your .gitignore file if it's not already there
-echo node_modules/ >> .gitignore 
+# dependencies
+/node_modules
 
-# 4. Tell Git to stop tracking the files that were just deleted
-git rm -r --cached node_modules
+# next.js
+/.next/
+/out/
 
+# production
+/build
 
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
