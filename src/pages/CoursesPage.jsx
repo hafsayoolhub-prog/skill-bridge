@@ -33,7 +33,7 @@ export default function CoursesPage() {
 
   return (
     <main className="min-h-screen py-8 px-4 lg:px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="mb-4">
           <h1 className="text-4xl font-bold text-black mb-2">
             Explore Courses
