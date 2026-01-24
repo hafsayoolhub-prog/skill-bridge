@@ -10,54 +10,55 @@ export default function DashboardPage() {
   const [recentTasks, setRecentTasks] = useState([]);
   const [loadingStats, setLoadingStats] = useState(true);
 
-  useEffect(() => {
-    // Fetch courses and user stats
-    Promise.all([fetch("/courses.json").then((res) => res.json())])
-      .then(([coursesData]) => {
-        // Filter enrolled courses
-        const enrolled = coursesData.filter((course) =>
-          enrolledCourses.includes(course.id),
-        );
-        setEnrolledCoursesList(enrolled);
+useEffect(() => {
+  // 1. Fetch only static courses (Tasks should come from Context)
+  fetch("/courses.json")
+    .then((res) => res.json())
+    .then((coursesData) => {
+      // Filter enrolled courses
+      const enrolled = coursesData.filter((course) =>
+        enrolledCourses.includes(course.id)
+      );
+      setEnrolledCoursesList(enrolled);
 
-        // Filter recent tasks (upcoming and recent completed from context)
-        const recentTasksFiltered = tasks
-          .filter((task) =>
-            // Convert everything to string to prevent "1" !== 1 mismatch
-            enrolledCourses.map(String).includes(String(task.courseId)),
-          )
-          .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
-          .slice(0, 5);
+      // 2. CRITICAL FIX: Use 'tasks' directly from Context, not from a fetch
+      // This ensures that added/deleted tasks show up immediately
+      const recentTasksFiltered = tasks
+        .filter((task) =>
+          enrolledCourses.map(String).includes(String(task.courseId))
+        )
+        .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
+        .slice(0, 5);
 
-        setRecentTasks(recentTasksFiltered);
+      setRecentTasks(recentTasksFiltered);
 
-        // Calculate dynamic stats
-        const completedTasks = tasks.filter(
-          (task) => task.completed && enrolledCourses.includes(task.courseId),
-        ).length;
-        const totalTasks = tasks.filter((task) =>
-          enrolledCourses.includes(task.courseId),
-        ).length;
-        const progress =
-          totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
-        const upcomingTasks = totalTasks - completedTasks;
+      // Calculate stats using the live Context tasks
+      const completedTasks = tasks.filter(
+        (task) => task.completed && enrolledCourses.includes(task.courseId)
+      ).length;
+      
+      const totalTasks = tasks.filter((task) =>
+        enrolledCourses.includes(task.courseId)
+      ).length;
 
-        setStats({
-          coursesEnrolled: enrolled.length,
-          tasksCompleted: completedTasks,
-          currentStreak: userStats.currentStreak,
-          progress: progress,
-          upcomingTasks: upcomingTasks,
-          certificatesEarned: userStats.certificatesEarned,
-        });
+      const progress = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
-        setLoadingStats(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching dashboard data:", error);
-        setLoadingStats(false);
+      setStats({
+        coursesEnrolled: enrolled.length,
+        tasksCompleted: completedTasks,
+        currentStreak: userStats.currentStreak,
+        progress: progress,
+        upcomingTasks: totalTasks - completedTasks,
+        certificatesEarned: userStats.certificatesEarned,
       });
-  }, [enrolledCourses, userStats, tasks]);
+
+      setLoadingStats(false);
+    })
+    .catch((error) => {
+      console.error("Dashboard error:", error);
+      setLoadingStats(false);
+    });
+}, [enrolledCourses, userStats, tasks]); // 'tasks' dependency is vital here
 
   if (loadingStats) {
     return (
