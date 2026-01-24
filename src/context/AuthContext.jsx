@@ -61,45 +61,55 @@ export function AuthProvider({ children }) {
   }, []);
 
   const calculateStreak = (currentUser = user) => {
-    // Use the passed-in user, or fall back to the state user
+    // 1. If no user or no previous login, start at 0
     if (!currentUser || !currentUser.loginTime) return 0;
 
     const lastLogin = new Date(currentUser.loginTime);
     const today = new Date();
 
+    // Reset times to compare only dates
     lastLogin.setHours(0, 0, 0, 0);
     today.setHours(0, 0, 0, 0);
 
     const diffTime = today - lastLogin;
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-    if (diffDays === 1) {
-      return userStats.currentStreak;
-    } else if (diffDays === 0) {
-      // If they already logged in today, keep the current streak
+    if (diffDays === 0) {
+      // LOGGED IN TODAY: Return the streak as is (don't add, don't subtract)
+      // We subtract 1 here because handleLogin will add 1 back immediately
       return userStats.currentStreak > 0 ? userStats.currentStreak - 1 : 0;
+    } else if (diffDays === 1) {
+      // LOGGED IN YESTERDAY: Perfect! Return current streak to be incremented
+      return userStats.currentStreak;
     } else {
+      // MISSED DAYS: Streak reset
       return 0;
     }
   };
 
   const handleLogin = (name, email) => {
-    const userData = { name, email, loginTime: new Date().toISOString() };
-    const newStreakBase = calculateStreak(userData);
+    // 1. Get the existing user from storage to see their PREVIOUS login time
+    const savedUser = JSON.parse(localStorage.getItem("user"));
 
+    // 2. Calculate the base streak based on the OLD login time
+    const newStreakBase = calculateStreak(savedUser);
+
+    // 3. Update user with NEW login time
+    const userData = { name, email, loginTime: new Date().toISOString() };
     setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+
+    // 4. Update stats
     setUserStats((prev) => {
       const updatedStats = {
         ...prev,
+        // If it's a new day, this becomes Base + 1.
+        // If it's the same day, (Streak - 1) + 1 = Current Streak (stays same).
         currentStreak: Math.min(newStreakBase + 1, 30),
-        tasksCompleted: prev.tasksCompleted + 1,
       };
-      // Save to localStorage immediately to prevent loss on refresh
       localStorage.setItem("userStats", JSON.stringify(updatedStats));
       return updatedStats;
     });
-
-    localStorage.setItem("user", JSON.stringify(userData));
   };
 
   const handleLogout = () => {
@@ -149,7 +159,7 @@ export function AuthProvider({ children }) {
 
   const addTask = (taskData) => {
     const newTask = {
-      id: Date.now(), 
+      id: Date.now(),
       ...taskData,
       completed: false,
       createdAt: new Date().toISOString(),
@@ -164,7 +174,7 @@ export function AuthProvider({ children }) {
   const toggleTask = (taskId) => {
     setTasks((prev) => {
       const updated = prev.map((task) =>
-        task.id === taskId ? { ...task, completed: !task.completed } : task
+        task.id === taskId ? { ...task, completed: !task.completed } : task,
       );
       localStorage.setItem("tasks", JSON.stringify(updated));
       return updated;
