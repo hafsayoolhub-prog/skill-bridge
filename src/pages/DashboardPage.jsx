@@ -74,7 +74,7 @@ useEffect(() => {
     <main className="min-h-screen py-8 px-4 lg:px-6">
       <div className="max-w-6xl mx-auto">
         {/* Welcome Header */}
-        <div className="mb-8 animate-fade-in">
+        <div className="mb-6 animate-fade-in">
           <h1 className="text-3xl font-bold text-black mb-2">
             Welcome back, <span className="text-primary-500">{user?.name}</span>
           </h1>
@@ -84,50 +84,65 @@ useEffect(() => {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {[
             {
               label: "Courses Enrolled",
               value: stats?.coursesEnrolled,
               icon: "📚",
+              color: "bg-purple-100 text-purple-600",
             },
             {
               label: "Tasks Completed",
               value: stats?.tasksCompleted,
               icon: "✓",
+              color: "bg-green-100 text-green-600",
             },
             {
               label: "Current Streak",
-              value: `${stats?.currentStreak} days`,
+              value: stats?.currentStreak,
               icon: "🔥",
+              color: "bg-orange-100 text-orange-600",
             },
+            // {
+            //   label: "Certificates",
+            //   value: stats?.certificatesEarned,
+            //   icon: "🏆",
+            //   color: "bg-blue-100 text-blue-600",
+            // },
             {
-              label: "Certificates Earned",
-              value: stats?.certificatesEarned,
-              icon: "🏆",
-            },
-            {
-              label: "Upcoming Tasks",
+              label: "Upcoming",
               value: stats?.upcomingTasks,
               icon: "📅",
+              color: "bg-gray-100 text-gray-600",
             },
           ].map((stat, idx) => (
             <div
               key={idx}
-              className="bg-white border border-gray-200 rounded-xl p-3 hover:border-primary-500/30 transition animate-fade-in shadow-sm"
+              className="flex items-center justify-between bg-white px-4 py-5 rounded-2xl shadow-sm border border-gray-50 hover:shadow-md transition-shadow animate-fade-in"
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
-              <div className=" flex items-center justify-between ">
-                <p className="text-gray-600 text-sm mb-2">{stat.label}</p>
-                <p className="text-2xl">{stat.icon}</p>
+              <div className="flex items-center gap-4">
+                {/* Circular Icon Container */}
+                <div
+                  className={`w-10 h-10 flex items-center justify-center rounded-full ${stat.color} text-xl shrink-0`}
+                >
+                  {stat.icon}
+                </div>
+
+                {/* Label */}
+                <p className="text-gray-500 font-medium text-sm sm:text-base leading-tight">
+                  {stat.label}
+                </p>
               </div>
-              <p className="text-3xl font-bold text-black mb-2">
+
+              {/* Value */}
+              <span className="text-2xl font-bold text-slate-800 ml-2">
                 {stat.value}
-              </p>{" "}
+              </span>
             </div>
           ))}
         </div>
-
         {/* Enrolled Courses Section */}
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-black mb-4">

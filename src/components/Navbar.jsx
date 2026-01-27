@@ -1,4 +1,4 @@
-import logo from "../../public/logo.png";
+import logo from "/logo.png";
 
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,14 +9,14 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-2xs">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 ">
         <div className="flex justify-between items-center ">
           <div
             className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition"
             onClick={() => navigate("/")}
           >
-            <img src={logo} alt="SkillBridge Logo" className="w-24 h-auto" />
+            <img src={logo} alt="SkillBridge Logo" className="w-20 h-auto" />
           </div>
 
           <div className="flex items-center gap-6">
